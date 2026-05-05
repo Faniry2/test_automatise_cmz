@@ -13,7 +13,9 @@ public class Tribus extends BasePageObject{
 	public static final String BTN_PARTISAN= "#partisan_jheo_js";
 	public static final String BTN_SHOW_PARTICIPATION= "#navBarTribu > div.slick-list.draggable > div > li.listNavBarTribu.invitation.slick-slide > a";
 	public static final String BTN_ADHESION= "#fetch_adhesion_tribuT_elie_js";
-	
+	public static final String BTN_GALLERY=	"#see-gallery";
+	public static final String BTN_ATTRIBUTION_ROLE ="#privilege_management_jheo_js";
+	public static final String BTN_="#fetch_sous_tribuT_jheo_js";
 	
 	
 	public Tribus(Page page) {
