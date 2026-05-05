@@ -22,7 +22,7 @@ public class QuartierTest extends BaseTest{
 		quartier.publishContent(i+"");
 		
 		Thread.sleep(5000);
-		//make commenatire
+		//make commentaire
 		quartier.publishComment("ceci est un commentaire automatiser pour" + i);
 		
 		Thread.sleep(5000);
@@ -48,6 +48,15 @@ public class QuartierTest extends BaseTest{
 		
 		Thread.sleep(5000);
 		quartier.gotoAttributionRoles();
+		
+		Thread.sleep(5000);
+		quartier.makeSondage(false);
+		
+		Thread.sleep(5000);
+		quartier.makeSondage(true);
+		
+		Thread.sleep(5000);
+		quartier.showParametre("nouveau nom 2", "nouvelle description");
 	}
 	
 	

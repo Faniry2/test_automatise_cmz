@@ -143,33 +143,97 @@ public class Quartier extends BasePageObject {
     	
     }
     
-    public void gotoAttributionRoles() {
+    public void gotoAttributionRoles() throws InterruptedException {
     	
     	String btn_attribute_role="#tablePrivilege > tbody > tr.even > td:nth-child(3) > button";
     	String btn_create_role="#content_btn_to_edit_jheo_js > button";
     	String input_role="#role_name_jheo_js";
+    	String save_new_role_btn =".btn_action_save_edit_privillege_jheo_js";
     	
     	iframe.click(SHOW_ATTRIBUTION_ROLES);
     	
     	waitHelper.waitForElementInFrame(iframe,btn_attribute_role);
     	iframe.click(btn_attribute_role);
     	waitHelper.waitForElementInFrame(iframe,btn_create_role);
-    	iframe.fill(input_role, "gigolo");
     	iframe.click(btn_create_role);
+    	Thread.sleep(2000);
+    	iframe.fill(input_role, "gigolo");
+    	iframe.click(save_new_role_btn);
+    	
+    	
     	
     	
     }
+    public void makeSondage(boolean useEtab) {
+    	String btnSendSondage=".sondage-tomm-js";
+    	if(useEtab) {
+    		this.makeSondageDefault();
+    	}else {
+    		this.makeSondageDefault();
+    		this.gotoSondageChooseRestaurant();
+    	}
+    	iframe.click(btnSendSondage);
+    }
     
-    public void gotoSondage() {
-    	String modal="data-bs-target=[\"#sondageModal\"]";
+   
+    
+    private void makeSondageDefault() {
+    	String modal="[data-bs-target=\"#sondageModal\"]";
     	String question_input="#inputQuestion";
     	String chooseAutreResponse="#flexSwitchReponseMultiplie";
     	String chooseMultipleQuestion="#flexSwitchReponseMultiplie";
-    	iframe.click(SHOW_SONDAGE);
-    	iframe.fill(question_input, "le test il bon ou non");
+    	String addResponseInput =".input-reponse-tomm-js";
+    	String btnAddQuestionBtn="#button-addon2";
     	
+    	
+    	iframe.click(SHOW_SONDAGE);
+    	
+      	waitHelper.waitForElementInFrame(iframe,modal);
     	iframe.click(modal);
     	
+    	iframe.fill(question_input, "le test il bon ou non");
+    	iframe.fill(addResponseInput, "est que la methode de test automatique marche "+ Math.random());
+    	
+    	iframe.click(chooseAutreResponse);
+    	iframe.click(chooseMultipleQuestion);
+    	
+    	iframe.click(btnAddQuestionBtn);
+    	
+    	iframe.click(btnAddQuestionBtn);
+    	
+    }
+    
+    private void gotoSondageChooseRestaurant() {
+    	String showmodalRestaurant="[for=\"showresto\"]";
+    	String chooseRestaurantBtn="#tableEtabCMZ > tbody > tr:nth-child(1) > td:nth-child(5) > button";
+    	String applyChoice="#applyAction";
+    	
+    	
+    	iframe.click(showmodalRestaurant);
+    	iframe.click(chooseRestaurantBtn);
+    	iframe.click(applyChoice);
+    }
+    
+    public void showParametre(String newName, String description) {
+    	String btnShowParametre= "#settingTribuG";
+    	String btnSetChoice="#updateTribuInfo";
+    	
+    	iframe.click(btnShowParametre);
+    	
+    	this.changeName(newName);
+    	this.changeDescription(description);
+    	
+    	iframe.click(btnSetChoice);
+    }
+    
+    private void changeName(String newName) {
+    	String input_change_name="#updateTribuTName";
+    	iframe.fill(input_change_name, newName);
+    }
+    
+    private void changeDescription(String description) {
+    	String input_change_description="#update_description";
+    	iframe.fill(input_change_description, description);
     }
     
     @Override
