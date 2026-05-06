@@ -125,4 +125,39 @@ public class TribusTest extends BaseTest {
             "image3.jpg"
         );
     }
+    @Test
+    @DisplayName("Créer une sous-tribu simple")
+    public void testCreerSousTribu() {
+        tribus.creerSousTribu(
+            "Ma sous-tribu test",
+            "Description de ma sous-tribu"
+        );
+    }
+
+    @Test
+    @DisplayName("Créer une sous-tribu avec image")
+    public void testCreerSousTribyAvecImage() {
+        tribus.creerSousTribu(
+            "Sous-tribu avec image",
+            "Description avec image",
+            "image1.jpg"
+        );
+    }
+
+    @Test
+    @DisplayName("Ouvrir modal et annuler")
+    public void testAnnulerCreationSousTribu() {
+        tribus.ouvrirCreationSousTribu();
+        tribus.annulerCreationSousTribu();
+    }
+
+    @Test
+    @DisplayName("Créer sous-tribu données aléatoires")
+    public void testCreerSousTribyRapide() {
+        tribus.creerSousTribu();
+    }
+    
+
+
+
 }
