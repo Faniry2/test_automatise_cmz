@@ -8,7 +8,7 @@ import helpers.IframeProvider.IframeType;
 public abstract class BasePageObject {
 
     protected Page page;
-    protected Frame iframe;
+    public Frame iframe;
     protected IframeProvider iframeProvider;
 
     // ✅ Constructeur simple avec juste la page
